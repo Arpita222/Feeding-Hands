@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+/* Global Styling */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
+}
