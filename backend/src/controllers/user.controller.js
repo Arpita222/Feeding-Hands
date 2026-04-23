@@ -77,7 +77,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
   if (!(username || email)) {
-    throw new ApiError(400, "username or password is required");
+    throw new ApiError(400, "username or email is required");
   }
 
   //find the user
@@ -109,7 +109,8 @@ const loginUser = asyncHandler(async (req, res) => {
   //send cookies
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
+    sameSite: "None", 
   };
 
   return res
@@ -144,9 +145,10 @@ const logoutUser = asyncHandler(async (req, res) => {
   );
 
   const options = {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-  };
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+};
 
   return (
     res
@@ -180,9 +182,10 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     }
 
     const options = {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-    };
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+};
 
     const { accessToken, newrefreshToken } =
       await generateAccessAndRefereshTokens(user._id);
