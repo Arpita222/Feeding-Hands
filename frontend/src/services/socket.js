@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8000", {
+const socket = io("https://feeding-hands-m10a.onrender.com", {
   withCredentials: true,
   autoConnect: false,
 });
